@@ -1,5 +1,6 @@
 {
   "name": "taproot-with-bitcoinjs",
+  "type": "module",
   "version": "1.0.0",
   "main": "dist/index.js",
   "repository": "git@github.com:Eunovo/taproot-with-bitcoinjs.git",
@@ -21,6 +22,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "yarn build && node dist/index.js"
+    "start": "yarn build && node dist/index.js",
+    "clean": "rm -rf ./dist/*"
   }
 }

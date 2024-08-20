@@ -6,7 +6,7 @@ import {
     crypto,
     Psbt
 } from "bitcoinjs-lib";
-import { broadcast, waitUntilUTXO } from "./blockstream_utils";
+import { broadcast, waitUntilUTXO } from "./blockstream_utils.js";
 import { ECPairFactory, ECPairAPI, TinySecp256k1Interface,ECPairInterface } from 'ecpair';
 import { generateMnemonic,mnemonicToSeedSync,validateMnemonic } from 'bip39';
 import BIP32Factory, { BIP32Interface } from 'bip32';
@@ -14,11 +14,14 @@ import * as ecc from 'tiny-secp256k1';
 
 import { input, confirm, number, select } from '@inquirer/prompts';
 
-const tinysecp: TinySecp256k1Interface = require('tiny-secp256k1');
+// const tinysecp: TinySecp256k1Interface = require('tiny-secp256k1');
+import * as tinysecp from 'tiny-secp256k1';
+
+
 initEccLib(tinysecp as any);
 const ECPair: ECPairAPI = ECPairFactory(tinysecp);
 const network = networks.testnet;
-const bip32 = BIP32Factory(ecc);
+const bip32 = BIP32Factory.default(ecc);
 
 async function start() {
 
